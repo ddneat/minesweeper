@@ -1,0 +1,7 @@
+{
+  "extends": "airbnb",
+  "globals": {
+    "test": true,
+    "suite": true
+  }
+}
