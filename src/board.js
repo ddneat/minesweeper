@@ -1,9 +1,9 @@
 export default (size, mines) => {
   const board = [];
 
-  while (board.length < size.x) {
+  while (board.length < size.y) {
     board.push([]);
-    while (board[board.length - 1] <= size.y) {
+    for (let i = 0; i < size.x; i++) {
       board[board.length - 1].push(0);
     }
   }
@@ -14,7 +14,11 @@ export default (size, mines) => {
     y >= 0 && y < size.y
   );
 
-  mines.forEach(({ x, y }) => {
+  mines.forEach(({ x, y }, index) => {
+    if (!isInBoard({ x, y })) {
+      throw new Error(`Mine ${index} outside the board`);
+    }
+
     board[x][y] = 'mine';
 
     const adjacentCells = [

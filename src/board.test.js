@@ -3,11 +3,13 @@ import createBoard from './board';
 
 suite('board', () => {
   test('generate size', () => {
-    const size = { x: 2, y: 2 };
+    const size = { x: 5, y: 4 };
     const mines = [];
     assert.deepEqual(createBoard(size, mines), [
-      [0, 0],
-      [0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0]
     ]);
   });
 
@@ -36,5 +38,17 @@ suite('board', () => {
       [2, 'mine'],
       ['mine', 2],
     ]);
+  });
+
+  test('throws an error when mine position x is higher than the board size', () => {
+    const size = { x: 2, y: 2 };
+    const mines = [{ x: 5, y: 0 }];
+    assert.throws(() => createBoard(size, mines), /Mine 0 outside the board/);
+  });
+
+  test('throws an error when mine position y is higher than the board size', () => {
+    const size = { x: 2, y: 2 };
+    const mines = [{ x: 1, y: 2 }];
+    assert.throws(() => createBoard(size, mines), /Mine 0 outside the board/);
   });
 });
