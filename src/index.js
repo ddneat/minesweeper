@@ -8,6 +8,7 @@ const generateRandom = max => Math.floor(Math.random() * (max + 1));
 
 const mines = createMines(boardSize, amountMines, generateRandom);
 const board = createBoard(boardSize, mines);
+const cells = board.getCells();
 
 const cellNodes = {};
 const rootNode = document.createElement('div');
@@ -22,14 +23,14 @@ const markCell = (e) => {
 const unveilCell = (e) => {
   const coordinates = e.target.getAttribute('cell');
   const cellNode = cellNodes[coordinates];
-  const boardIndices = coordinates.split('|');
-  const cellValue = board[boardIndices[0]][boardIndices[1]];
+  const cellIndices = coordinates.split('|');
+  const cellValue = cells[cellIndices[0]][cellIndices[1]];
   cellNode.setAttribute('class', `cell-${cellValue}`);
   cellNode.textContent = cellValue;
   cellNode.removeEventListener('contextmenu', markCell);
 };
 
-board.forEach((row, x) => {
+cells.forEach((row, x) => {
   const rowNode = document.createElement('div');
   row.forEach((cell, y) => {
     const cellNode = document.createElement('button');
