@@ -3,7 +3,7 @@ export default (size, mines) => {
 
   while (board.length < size.y) {
     board.push([]);
-    for (let i = 0; i < size.x; i++) {
+    while (board[board.length - 1].length < size.x) {
       board[board.length - 1].push(0);
     }
   }
@@ -37,5 +37,7 @@ export default (size, mines) => {
       .map(cell => (board[cell.x][cell.y] += 1));
   });
 
-  return board;
+  return {
+    getCells: () => board
+  };
 };
