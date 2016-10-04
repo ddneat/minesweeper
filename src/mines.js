@@ -11,11 +11,11 @@ export default (size, amount, generateRandom) => {
     do {
       candidate = {
         x: generateRandom(size.x - 1),
-        y: generateRandom(size.y - 1)
+        y: generateRandom(size.y - 1),
       };
     } while (!isMineUnique(candidate));
     mines.push(candidate);
   }
 
   return mines;
-}
+};

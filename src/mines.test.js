@@ -32,7 +32,7 @@ suite('mines', () => {
 
     assert.deepEqual(createMines(size, amount, generateRandom), [
       { x: 0, y: 2 },
-      { x: 1, y: 5 }
+      { x: 1, y: 5 },
     ]);
   });
 
@@ -51,7 +51,7 @@ suite('mines', () => {
 
     assert.deepEqual(createMines(size, amount, generateRandom), [
       { x: 0, y: 0 },
-      { x: 1, y: 1 }
+      { x: 1, y: 1 },
     ]);
   });
 });

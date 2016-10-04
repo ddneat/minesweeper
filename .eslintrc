@@ -1,7 +1,11 @@
 {
   "extends": "airbnb",
+  "rules": {
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.js"]}] // allow sinon as dev dependency
+  },
   "globals": {
     "test": true,
-    "suite": true
+    "suite": true,
+    "document": true
   }
 }
