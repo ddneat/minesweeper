@@ -3,11 +3,14 @@
   "version": "0.0.1",
   "description": "Clear the board from hidden mines without detonating any of them",
   "main": "src/index.js",
+  "config": {
+    "namespace": "minesweeper"
+  },
   "scripts": {
     "start": "http-server",
     "test": "mocha -u tdd --compilers js:babel-core/register ./src/*.test.js",
     "lint": "eslint src",
-    "bundle": "rimraf ./dist && mkdirp ./dist && browserify ./src/index.js -t babelify --outfile ./dist/app.js",
+    "bundle": "rimraf ./dist && mkdirp ./dist && browserify ./src/index.js -t babelify --outfile ./dist/$npm_package_config_namespace.js",
     "test-ci": "npm run lint && npm test"
   },
   "babel": {
