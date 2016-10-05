@@ -8,36 +8,38 @@ export default (size, mines) => {
     }
   }
 
-  const isMine = ({ x, y }) => board[x][y] === 'mine';
-  const isInBoard = ({ x, y }) => (
+  const setMine = (x, y) => (board[x][y] = 'mine');
+  const isMine = (x, y) => board[x][y] === 'mine';
+  const isCellInBoard = (x, y) => (
     x >= 0 && x < size.x &&
     y >= 0 && y < size.y
   );
+  const getAdjacentCells = (x, y) => ([
+    { x: x - 1, y },
+    { x: x + 1, y },
+    { x, y: y + 1 },
+    { x, y: y - 1 },
+    { x: x - 1, y: y + 1 },
+    { x: x + 1, y: y + 1 },
+    { x: x - 1, y: y - 1 },
+    { x: x + 1, y: y - 1 },
+  ]);
 
   mines.forEach(({ x, y }, index) => {
-    if (!isInBoard({ x, y })) {
+    if (!isCellInBoard(x, y)) {
       throw new Error(`Mine ${index} outside the board`);
     }
 
-    board[x][y] = 'mine';
-
-    const adjacentCells = [
-      { x: x - 1, y },
-      { x: x + 1, y },
-      { x, y: y + 1 },
-      { x, y: y - 1 },
-      { x: x - 1, y: y + 1 },
-      { x: x + 1, y: y + 1 },
-      { x: x - 1, y: y - 1 },
-      { x: x + 1, y: y - 1 },
-    ];
-
-    adjacentCells
-      .filter(cell => isInBoard(cell) && !isMine(cell))
+    setMine(x, y);
+    getAdjacentCells(x, y)
+      .filter(cell => isCellInBoard(cell.x, cell.y) && !isMine(cell.x, cell.y))
       .map(cell => (board[cell.x][cell.y] += 1));
   });
 
   return {
-    getCells: () => board
+    getCells: () => board,
+    isMine,
+    isCellInBoard,
+    getAdjacentCells,
   };
 };
