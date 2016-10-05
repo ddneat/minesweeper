@@ -14,7 +14,7 @@ export default (size, mines) => {
     x >= 0 && x < size.x &&
     y >= 0 && y < size.y
   );
-  const getAdjacentCells = (x, y) => ([
+  const getSurroundingCoordinates = (x, y) => ([
     { x: x - 1, y },
     { x: x + 1, y },
     { x, y: y + 1 },
@@ -31,7 +31,7 @@ export default (size, mines) => {
     }
 
     setMine(x, y);
-    getAdjacentCells(x, y)
+    getSurroundingCoordinates(x, y)
       .filter(cell => isCellInBoard(cell.x, cell.y) && !isMine(cell.x, cell.y))
       .map(cell => (board[cell.x][cell.y] += 1));
   });
@@ -40,6 +40,6 @@ export default (size, mines) => {
     getCells: () => board,
     isMine,
     isCellInBoard,
-    getAdjacentCells,
+    getSurroundingCoordinates,
   };
 };

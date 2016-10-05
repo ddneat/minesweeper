@@ -105,11 +105,11 @@ suite('board', () => {
     assert.equal(board.isCellInBoard(1, 2), false);
   });
 
-  test('getAdjacentCells returns an array of cells', () => {
+  test('getSurroundingCoordinates returns an array of cells', () => {
     const size = { x: 2, y: 2 };
     const mines = [];
     const board = createBoard(size, mines);
-    assert.deepEqual(board.getAdjacentCells(1, 2), [
+    assert.deepEqual(board.getSurroundingCoordinates(1, 2), [
       { x: 0, y: 2 },
       { x: 2, y: 2 },
       { x: 1, y: 3 },
