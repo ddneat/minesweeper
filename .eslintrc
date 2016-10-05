@@ -6,6 +6,7 @@
   "globals": {
     "test": true,
     "suite": true,
+    "setup": true,
     "document": true
   }
 }
