@@ -70,39 +70,39 @@ suite('board', () => {
     assert.equal(board.isMine(0, 1), false);
   });
 
-  test('isCellInBoard returns true when coordinate x and y are inside the board', () => {
+  test('isInBoard returns true when coordinate x and y are inside the board', () => {
     const size = { x: 2, y: 2 };
     const mines = [];
     const board = createBoard(size, mines);
-    assert.equal(board.isCellInBoard(0, 1), true);
+    assert.equal(board.isInBoard(0, 1), true);
   });
 
-  test('isCellInBoard returns false when coordinate x is less than size', () => {
+  test('isInBoard returns false when coordinate x is less than size', () => {
     const size = { x: 2, y: 2 };
     const mines = [];
     const board = createBoard(size, mines);
-    assert.equal(board.isCellInBoard(-1, 1), false);
+    assert.equal(board.isInBoard(-1, 1), false);
   });
 
-  test('isCellInBoard returns false when coordinate y is less than size', () => {
+  test('isInBoard returns false when coordinate y is less than size', () => {
     const size = { x: 2, y: 2 };
     const mines = [];
     const board = createBoard(size, mines);
-    assert.equal(board.isCellInBoard(0, -1), false);
+    assert.equal(board.isInBoard(0, -1), false);
   });
 
-  test('isCellInBoard returns false when coordinate x is higher than size', () => {
+  test('isInBoard returns false when coordinate x is higher than size', () => {
     const size = { x: 2, y: 2 };
     const mines = [];
     const board = createBoard(size, mines);
-    assert.equal(board.isCellInBoard(2, 1), false);
+    assert.equal(board.isInBoard(2, 1), false);
   });
 
-  test('isCellInBoard returns false when coordinate y is higher than size', () => {
+  test('isInBoard returns false when coordinate y is higher than size', () => {
     const size = { x: 2, y: 2 };
     const mines = [];
     const board = createBoard(size, mines);
-    assert.equal(board.isCellInBoard(1, 2), false);
+    assert.equal(board.isInBoard(1, 2), false);
   });
 
   test('getSurroundingCoordinates returns an array of cells', () => {

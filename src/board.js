@@ -10,7 +10,7 @@ export default (size, mines) => {
 
   const setMine = (x, y) => (board[x][y] = 'mine');
   const isMine = (x, y) => board[x][y] === 'mine';
-  const isCellInBoard = (x, y) => (
+  const isInBoard = (x, y) => (
     x >= 0 && x < size.x &&
     y >= 0 && y < size.y
   );
@@ -26,20 +26,20 @@ export default (size, mines) => {
   ]);
 
   mines.forEach(({ x, y }, index) => {
-    if (!isCellInBoard(x, y)) {
+    if (!isInBoard(x, y)) {
       throw new Error(`Mine ${index} outside the board`);
     }
 
     setMine(x, y);
     getSurroundingCoordinates(x, y)
-      .filter(cell => isCellInBoard(cell.x, cell.y) && !isMine(cell.x, cell.y))
+      .filter(cell => isInBoard(cell.x, cell.y) && !isMine(cell.x, cell.y))
       .map(cell => (board[cell.x][cell.y] += 1));
   });
 
   return {
     getCells: () => board,
     isMine,
-    isCellInBoard,
+    isInBoard,
     getSurroundingCoordinates,
   };
 };
