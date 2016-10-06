@@ -8,8 +8,8 @@ export default (size, mines) => {
     }
   }
 
-  const setMine = (x, y) => (board[x][y] = 'mine');
-  const isMine = (x, y) => board[x][y] === 'mine';
+  const setMine = (x, y) => (board[x][y] = 'm');
+  const isMine = (x, y) => board[x][y] === 'm';
   const isInBoard = (x, y) => (
     x >= 0 && x < size.x &&
     y >= 0 && y < size.y

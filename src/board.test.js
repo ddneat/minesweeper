@@ -19,8 +19,8 @@ suite('board', () => {
     const mines = [{ x: 0, y: 0 }, { x: 1, y: 1 }, { x: 0, y: 1 }, { x: 1, y: 0 }];
     const board = createBoard(size, mines);
     assert.deepEqual(board.getCells(), [
-      ['mine', 'mine'],
-      ['mine', 'mine'],
+      ['m', 'm'],
+      ['m', 'm'],
     ]);
   });
 
@@ -30,7 +30,7 @@ suite('board', () => {
     const board = createBoard(size, mines);
     assert.deepEqual(board.getCells(), [
       [1, 1],
-      ['mine', 1],
+      ['m', 1],
     ]);
   });
 
@@ -39,8 +39,8 @@ suite('board', () => {
     const mines = [{ x: 1, y: 0 }, { x: 0, y: 1 }];
     const board = createBoard(size, mines);
     assert.deepEqual(board.getCells(), [
-      [2, 'mine'],
-      ['mine', 2],
+      [2, 'm'],
+      ['m', 2],
     ]);
   });
 
