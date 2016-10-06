@@ -1,0 +1,100 @@
+body {
+    padding: 40px 20px;
+    font-family: sans-serif;
+    text-align: center;
+    white-space: nowrap;
+    overflow: scroll;
+}
+button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #bbb;
+    color: #ababab;
+    background: #ababab;
+    font-size: 1em;
+    font-weight: 900;
+}
+button:hover,
+button:focus {
+    outline: none;
+    border-color: #555;
+    cursor: pointer;
+}
+.app {
+    display: inline-block;
+}
+.score {
+    text-align: left;
+    color: #999;
+    margin-bottom: 10px;
+}
+.score:before {
+    display: inline-block;
+    content: 'Marked:';
+    margin-right: 5px;
+}
+.cell-marked {
+    background: #555;
+    color: #555;
+    position: relative;
+}
+.cell-marked:before {
+    content: '🚩';
+    position: absolute;
+    line-height: 30px;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+.cell-mine {
+    background: red;
+    color: red;
+    position: relative;
+}
+.cell-mine:before {
+    content: '💣';
+    position: absolute;
+    line-height: 30px;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+.cell-0,
+.cell-1,
+.cell-2,
+.cell-3,
+.cell-4,
+.cell-5,
+.cell-6,
+.cell-7,
+.cell-8 {
+    background: #cdcdcd;
+}
+.cell-0 {
+    color: transparent;
+}
+.cell-1 {
+    color: blue;
+}
+.cell-2 {
+    color: green;
+}
+.cell-3 {
+    color: red;
+}
+.cell-4,
+.cell-5,
+.cell-6,
+.cell-7,
+.cell-8 {
+    color: red;
+}
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
