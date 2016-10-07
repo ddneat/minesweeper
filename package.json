@@ -10,7 +10,7 @@
     "start": "http-server",
     "test": "mocha -u tdd --compilers js:babel-core/register ./src/*.test.js",
     "lint": "eslint src",
-    "bundle": "rimraf ./dist && mkdirp ./dist && browserify ./src/index.js -t babelify --outfile ./dist/$npm_package_config_namespace.js && uglifyjs dist/$npm_package_config_namespace.js -cm > dist/$npm_package_config_namespace.min.js",
+    "bundle": "rimraf ./dist && mkdirp ./dist && browserify ./src/index.js -t babelify --outfile ./dist/$npm_package_config_namespace.js",
     "test-ci": "npm run lint && npm test"
   },
   "babel": {
