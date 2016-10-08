@@ -72,7 +72,7 @@ var _uncover2 = _interopRequireDefault(_uncover);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var boardSize = { x: 20, y: 20 };
-var amountMines = 70;
+var amountMines = parseInt(boardSize.x * boardSize.y * 0.2, 10);
 
 var generateRandom = function generateRandom(max) {
   return Math.floor(Math.random() * (max + 1));
@@ -148,13 +148,12 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = function (size, amount, generateRandom) {
   var mines = [];
 
-  var isMineUnique = function isMineUnique(mine) {
-    var matchingMines = mines.filter(function (_ref) {
+  var isNotUnique = function isNotUnique(mine) {
+    return mines.some(function (_ref) {
       var x = _ref.x;
       var y = _ref.y;
       return x === mine.x && y === mine.y;
     });
-    return matchingMines.length === 0;
   };
 
   var candidate = void 0;
@@ -164,7 +163,7 @@ exports.default = function (size, amount, generateRandom) {
         x: generateRandom(size.x - 1),
         y: generateRandom(size.y - 1)
       };
-    } while (!isMineUnique(candidate));
+    } while (isNotUnique(candidate));
     mines.push(candidate);
   }
 
