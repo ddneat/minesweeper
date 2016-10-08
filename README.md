@@ -1,3 +1,6 @@
-# minesweeper
+# minesweeper 💣
 
-💣 Clear the board from hidden mines without detonating any of them 
+> Implementation of the classic game minesweeper using JavaScript 
+
+💥 💥 💥 enjoy the blast 💥 💥 💥
+ 
