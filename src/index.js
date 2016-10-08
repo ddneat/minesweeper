@@ -3,7 +3,7 @@ import createMines from './mines';
 import createUncover from './uncover';
 
 const boardSize = { x: 20, y: 20 };
-const amountMines = 70;
+const amountMines = parseInt(boardSize.x * boardSize.y * 0.2, 10);
 
 const generateRandom = max => Math.floor(Math.random() * (max + 1));
 
