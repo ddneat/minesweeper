@@ -1,10 +1,9 @@
 export default (size, amount, generateRandom) => {
   const mines = [];
 
-  const isMineUnique = (mine) => {
-    const matchingMines = mines.filter(({ x, y }) => x === mine.x && y === mine.y);
-    return matchingMines.length === 0;
-  };
+  const isNotUnique = mine => (
+    mines.some(({ x, y }) => (x === mine.x && y === mine.y))
+  );
 
   let candidate;
   while (mines.length < amount) {
@@ -13,7 +12,7 @@ export default (size, amount, generateRandom) => {
         x: generateRandom(size.x - 1),
         y: generateRandom(size.y - 1),
       };
-    } while (!isMineUnique(candidate));
+    } while (isNotUnique(candidate));
     mines.push(candidate);
   }
 
