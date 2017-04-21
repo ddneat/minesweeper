@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "http-server",
-    "test": "mocha -u tdd --compilers js:babel-core/register ./src/*.test.js",
+    "test": "tropic --require=babel-register ./src/*.test.js",
     "lint": "eslint src",
     "bundle": "rimraf ./dist && mkdirp ./dist && browserify ./src/index.js -t babelify --outfile ./dist/$npm_package_config_namespace.js",
     "test-ci": "npm run lint && npm test"
@@ -23,6 +23,7 @@
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-preset-es2015": "^6.16.0",
+    "babel-register": "^6.24.1",
     "babelify": "^7.3.0",
     "browserify": "^13.1.0",
     "eslint": "^3.7.0",
@@ -32,8 +33,8 @@
     "eslint-plugin-react": "^6.3.0",
     "http-server": "^0.9.0",
     "mkdirp": "^0.5.1",
-    "mocha": "^3.1.0",
     "rimraf": "^2.5.4",
-    "sinon": "^1.17.6"
+    "sinon": "^1.17.6",
+    "tropic": "^0.4.0"
   }
 }
