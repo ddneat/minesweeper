@@ -106,3 +106,31 @@ button:focus {
     -ms-user-select: none;
     user-select: none;
 }
+.game-over {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(33,33,33,0.8);
+  text-align: center;
+}
+.game-over div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 200px;
+  margin-top: -100px;
+  margin-left: -200px;
+}
+.game-over h1 {
+  font-size: 28px;
+  color: #cc7400;
+}
+.game-over button {
+  width: 100px;
+  font-size: 14px;
+  background: #ddd;
+  color: #333;
+}
