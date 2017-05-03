@@ -61,7 +61,8 @@ const unveilCell = (e) => {
     const cellValue = cells[cell.x][cell.y];
     const cellNode = cellNodes[`${cell.x}|${cell.y}`];
     if (cellNode.className === 'cell-marked') return;
-    const cellType = cellValue === 'm' ? gameOver() && 'mine' : cellValue;
+    if (cellValue === 'm') gameOver();
+    const cellType = cellValue === 'm' ? 'mine' : cellValue;
     cellNode.setAttribute('class', `cell-${cellType}`);
     cellNode.textContent = cellValue;
   });
