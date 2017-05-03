@@ -108,6 +108,23 @@ var markCell = function markCell(e) {
   }
 };
 
+var gameOver = function gameOver() {
+  var overlayNode = document.createElement('div');
+  var headerNode = document.createElement('div');
+  var textNode = document.createElement('h1');
+  var buttonNode = document.createElement('button');
+  overlayNode.setAttribute('class', 'game-over');
+  textNode.textContent = 'Boooom! Game Over.';
+  buttonNode.textContent = 'Replay';
+  buttonNode.addEventListener('click', function () {
+    return document.location.reload();
+  });
+  headerNode.appendChild(textNode);
+  headerNode.appendChild(buttonNode);
+  overlayNode.appendChild(headerNode);
+  rootNode.appendChild(overlayNode);
+};
+
 var unveilCell = function unveilCell(e) {
   if (e.target.className === 'cell-marked') return;
   var coordinates = e.target.getAttribute('cell');
@@ -117,7 +134,7 @@ var unveilCell = function unveilCell(e) {
     var cellValue = cells[cell.x][cell.y];
     var cellNode = cellNodes[cell.x + '|' + cell.y];
     if (cellNode.className === 'cell-marked') return;
-    var cellType = cellValue === 'm' ? 'mine' : cellValue;
+    var cellType = cellValue === 'm' ? gameOver() && 'mine' : cellValue;
     cellNode.setAttribute('class', 'cell-' + cellType);
     cellNode.textContent = cellValue;
   });

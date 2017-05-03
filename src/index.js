@@ -37,6 +37,21 @@ const markCell = (e) => {
   }
 };
 
+const gameOver = () => {
+  const overlayNode = document.createElement('div');
+  const headerNode = document.createElement('div');
+  const textNode = document.createElement('h1');
+  const buttonNode = document.createElement('button');
+  overlayNode.setAttribute('class', 'game-over');
+  textNode.textContent = 'Boooom! Game Over.';
+  buttonNode.textContent = 'Replay';
+  buttonNode.addEventListener('click', () => document.location.reload());
+  headerNode.appendChild(textNode);
+  headerNode.appendChild(buttonNode);
+  overlayNode.appendChild(headerNode);
+  rootNode.appendChild(overlayNode);
+};
+
 const unveilCell = (e) => {
   if (e.target.className === 'cell-marked') return;
   const coordinates = e.target.getAttribute('cell');
@@ -46,7 +61,7 @@ const unveilCell = (e) => {
     const cellValue = cells[cell.x][cell.y];
     const cellNode = cellNodes[`${cell.x}|${cell.y}`];
     if (cellNode.className === 'cell-marked') return;
-    const cellType = cellValue === 'm' ? 'mine' : cellValue;
+    const cellType = cellValue === 'm' ? gameOver() && 'mine' : cellValue;
     cellNode.setAttribute('class', `cell-${cellType}`);
     cellNode.textContent = cellValue;
   });
