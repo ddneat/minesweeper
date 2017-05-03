@@ -134,7 +134,8 @@ var unveilCell = function unveilCell(e) {
     var cellValue = cells[cell.x][cell.y];
     var cellNode = cellNodes[cell.x + '|' + cell.y];
     if (cellNode.className === 'cell-marked') return;
-    var cellType = cellValue === 'm' ? gameOver() && 'mine' : cellValue;
+    if (cellValue === 'm') gameOver();
+    var cellType = cellValue === 'm' ? 'mine' : cellValue;
     cellNode.setAttribute('class', 'cell-' + cellType);
     cellNode.textContent = cellValue;
   });
